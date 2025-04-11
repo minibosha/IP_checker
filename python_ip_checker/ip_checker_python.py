@@ -9,7 +9,11 @@ while True:
     except:
         True
 
-    file = open(r'C:\554\ip.txt', 'r', encoding='utf-8')  # считывание файла
+    address_of_file: str = r'C:\554\ip.txt'
+    try:
+        file = open(address_of_file, 'r', encoding='utf-8')  # считывание файла
+    except (FileNotFoundError, ValueError):
+        exit(0) # Выход при программе если файл не найден или с ошибкой
 
     counter = 0  # создание счётчика
     for line in file:  # проверка и распределение в файле
